@@ -12,7 +12,9 @@
             <a href="{% url 'tasks:detail' task.id %}">{{ task.task_name }}</a>
             <ul>
                 <li>deadline : {{ task.deadline }}</li>
-                <li>progress rate : {{ task.progress_rate }} %</li>
+                {% if task.subtask_set.all %}
+                    <li>progress rate : {{ task.progress_rate }} %</li>
+                {% endif %}
             </ul>
         </li>
     {% endfor %}
