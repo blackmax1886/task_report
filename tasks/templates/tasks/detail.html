@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>{{ task.task_name }}</h1>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>
+{% endif %}
+
+{% if subtasks %}
+    <ul>
+    {% for subtask in subtasks %}
+        <li>{{ subtask.subtask_name }}</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>There is no subtask. Add your subtasks.</p>
+{% endif %}
+</body>
+</html>

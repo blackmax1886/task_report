@@ -3,7 +3,7 @@ from django.views.generic import TemplateView
 from django.http import HttpResponse
 from django.template import loader
 
-from .models import Task
+from .models import Task, Subtask
 
 
 # class IndexView(TemplateView):
@@ -20,4 +20,10 @@ def index(request):
 
 
 def detail(request, pk):
-    return HttpResponse("This page show No.%s task detail.", pk)
+    task = Task.objects.get(id=pk)
+    subtasks = Subtask.objects.filter(task=task)
+    context = {
+        'task': task,
+        'subtasks': subtasks
+    }
+    return render(request, 'tasks/detail.html', context)
