@@ -10,9 +10,9 @@
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>
 {% endif %}
 
-{% if subtasks %}
+{% if task.subtask_set.all %}
     <ul>
-    {% for subtask in subtasks %}
+    {% for subtask in task.subtask_set.all %}
         <li>{{ subtask.subtask_name }}</li>
     {% endfor %}
     </ul>

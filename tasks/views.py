@@ -19,11 +19,6 @@ def index(request):
     return render(request, 'tasks/index.html', context)
 
 
-def detail(request, pk):
-    task = get_object_or_404(Task, id=pk)
-    subtasks = Subtask.objects.filter(task=task)
-    context = {
-        'task': task,
-        'subtasks': subtasks
-    }
-    return render(request, 'tasks/detail.html', context)
+def detail(request, task_id):
+    task = get_object_or_404(Task, id=task_id)
+    return render(request, 'tasks/detail.html', {'task': task})
