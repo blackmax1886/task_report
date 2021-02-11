@@ -9,3 +9,7 @@ from django.http import HttpResponse
 
 def index(request):
     return HttpResponse("This page is going to show your tasks")
+
+
+def detail(request, pk):
+    return HttpResponse("This page show No.%s task detail.", pk)
