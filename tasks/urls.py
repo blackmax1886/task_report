@@ -5,7 +5,7 @@ from . import views
 app_name = 'tasks'
 urlpatterns = [
     # ex: /tasks/
-    path('', views.index, name='index'),
+    path('', views.IndexView.as_view(), name='index'),
     # ex: /tasks/4/
-    path('<int:task_id>/', views.detail, name='detail')
+    path('<int:pk>/', views.DetailView.as_view(), name='detail')
 ]
