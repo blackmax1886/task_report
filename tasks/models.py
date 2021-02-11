@@ -12,8 +12,9 @@ class Task(models.Model):
     def progress_rate(self):
         from math import floor
         subtasks_num = self.subtask_set.count()
-        complete_num = self.subtask_set.filter(status=True).count()
-        return floor((complete_num / subtasks_num) * 100)
+        if subtasks_num != 0:
+            complete_num = self.subtask_set.filter(status=True).count()
+            return floor((complete_num / subtasks_num) * 100)
 
 
 class Subtask(models.Model):
