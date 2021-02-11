@@ -8,7 +8,13 @@
 {% if latest_task_list %}
     <ul>
     {% for task in latest_task_list %}
-        <li><a href="{% url 'tasks:detail' task.id %}">{{ task.task_name }}</a></li>
+        <li>
+            <a href="{% url 'tasks:detail' task.id %}">{{ task.task_name }}</a>
+            <ul>
+                <li>deadline : {{ task.deadline }}</li>
+                <li>progress rate : {{ task.progress_rate }} %</li>
+            </ul>
+        </li>
     {% endfor %}
     </ul>
 {% else %}
