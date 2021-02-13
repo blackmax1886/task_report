@@ -7,3 +7,6 @@ class TaskForm(forms.ModelForm):
     class Meta:
         model = Task
         fields = ("task_name", "deadline")
+        widgets = {
+            'deadline': forms.SelectDateWidget
+        }
