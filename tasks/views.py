@@ -4,6 +4,7 @@ from django.views import generic
 from django.views.generic import TemplateView
 
 from .models import Task, Subtask
+from .forms import TaskForm
 
 
 class IndexView(generic.ListView):
@@ -18,3 +19,10 @@ class IndexView(generic.ListView):
 class DetailView(generic.DetailView):
     model = Task
     template_name = 'tasks/detail.html'
+
+
+class TaskCreateView(generic.CreateView):
+    model = Task
+    form_class = TaskForm
+    template_name = "tasks/form.html"
+    success_url = "/"
