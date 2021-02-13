@@ -1,19 +1,19 @@
-from django.http import HttpResponseRedirect
-from django.shortcuts import render, get_object_or_404
 from django.views import generic
-from django.views.generic import TemplateView
+from django.urls import reverse_lazy
 
 from .models import Task, Subtask
 from .forms import TaskForm
 
 
 class IndexView(generic.ListView):
+    model = Task
     template_name = 'tasks/index.html'
     context_object_name = 'closest_task_list'
+    paginate_by = 5
 
     def get_queryset(self):
-        """Return the 5 closest uncompleted tasks to deadline."""
-        return Task.objects.filter(status=False).order_by('-deadline')[:5:-1]
+        """Return the uncompleted tasks ordered by deadline."""
+        return Task.objects.filter(status=False).order_by('-deadline')[::-1]
 
 
 class DetailView(generic.DetailView):
@@ -25,4 +25,4 @@ class TaskCreateView(generic.CreateView):
     model = Task
     form_class = TaskForm
     template_name = "tasks/form.html"
-    success_url = "/"
+    success_url = reverse_lazy('tasks:index')
