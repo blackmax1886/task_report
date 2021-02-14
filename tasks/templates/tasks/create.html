@@ -1,12 +1,12 @@
 {% extends "tasks/base.html" %}
 {% load bootstrap4 %}
 
-{% block head %}
-    {{ form.media }}
+{% block title %}
+新規タスク
 {% endblock %}
 
 {% block content %}
-
+    {{ form.media }}
     <form method="post">
         {% csrf_token %}
         {% bootstrap_form form %}
