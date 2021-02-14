@@ -1,8 +1,14 @@
 <!DOCTYPE html>
+{% load static %}
+{% load bootstrap4 %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    {{ form.media }}
 </head>
 <body>
 {% block content %}{% endblock %}

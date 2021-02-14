@@ -1,14 +1,13 @@
 {% extends "tasks/create.html" %}
-
+{% load bootstrap4 %}
 {% block content %}
 
     <form method="post">
         {% csrf_token %}
-
-        <table>
-            {{ form.as_table }}
-        </table>
-        <button type="submit">save</button>
+        {% bootstrap_form form %}
+        {% buttons %}
+            <button type="submit" class="btn btn-primary">save</button>
+        {% endbuttons %}
     </form>
 
 {% endblock %}
