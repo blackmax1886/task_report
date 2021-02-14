@@ -1,16 +1,18 @@
-<!DOCTYPE html>
-{% load static %}
+{% extends "tasks/base.html" %}
 {% load bootstrap4 %}
-{% bootstrap_css %}
-{% bootstrap_javascript jquery='full' %}
 
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+{% block head %}
     {{ form.media }}
-</head>
-<body>
-{% block content %}{% endblock %}
-</body>
-</html>
+{% endblock %}
+
+{% block content %}
+
+    <form method="post">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        {% buttons %}
+            <button type="submit" class="btn btn-primary">save</button>
+        {% endbuttons %}
+    </form>
+
+{% endblock %}

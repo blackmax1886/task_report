@@ -24,5 +24,5 @@ class DetailView(generic.DetailView):
 class TaskCreateView(generic.CreateView):
     model = Task
     form_class = TaskForm
-    template_name = "tasks/form.html"
+    template_name = "tasks/create.html"
     success_url = reverse_lazy('tasks:index')
