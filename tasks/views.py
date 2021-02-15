@@ -1,8 +1,9 @@
 from django.views import generic
 from django.urls import reverse_lazy
+from django.contrib import messages
 
 from .models import Task, Subtask
-from .forms import TaskForm
+from .forms import TaskForm, SubtaskForm
 
 
 class IndexView(generic.ListView):
@@ -26,3 +27,12 @@ class TaskCreateView(generic.CreateView):
     form_class = TaskForm
     template_name = "tasks/create.html"
     success_url = reverse_lazy('tasks:index')
+
+
+class SubtaskCreateView(generic.CreateView):
+    model = Subtask
+    form_class = SubtaskForm
+    template_name = "tasks/create.html"
+
+    def get_success_url(self):  # 詳細画面にリダイレクトする。
+        return reverse_lazy('tasks:detail', kwargs={'pk': self.kwargs['pk']})
