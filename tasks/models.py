@@ -2,8 +2,8 @@ from django.db import models
 
 
 class Task(models.Model):
-    task_name = models.CharField(max_length=50)
-    deadline = models.DateTimeField()
+    task_name = models.CharField("タスク名", max_length=50)
+    deadline = models.DateTimeField("期限")
     status = models.BooleanField(default=False)
 
     def __str__(self):
@@ -19,8 +19,8 @@ class Task(models.Model):
 
 class Subtask(models.Model):
     task = models.ForeignKey(Task, on_delete=models.CASCADE)
-    subtask_name = models.CharField(max_length=50)
-    deadline = models.DateTimeField()
+    subtask_name = models.CharField("サブタスク名", max_length=50)
+    deadline = models.DateTimeField("期限")
     status = models.BooleanField(default=False)
 
     def __str__(self):

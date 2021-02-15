@@ -25,6 +25,7 @@ class SubtaskForm(forms.ModelForm):
     class Meta:
         model = Subtask
         fields = ("task", "subtask_name", "deadline")
+        labels = {"task": "タスク"}
         widgets = {
             'deadline': datetimepicker.DatePickerInput(
                 format='%Y-%m-%d',
