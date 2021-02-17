@@ -45,3 +45,16 @@ def complete(request, pk):
         task.status = True
         task.save()
     return HttpResponseRedirect(reverse('tasks:index'))
+
+
+def subcomplete(request, task_id, subtask_id):
+    task = get_object_or_404(Task, pk=task_id)
+    subtask = task.subtask_set.get(id=subtask_id)
+    if request.method == 'POST':
+        if 'complete' in request.POST:
+            subtask.status = True
+            subtask.save()
+        elif 'working' in request.POST:
+            subtask.status = False
+            subtask.save()
+    return HttpResponseRedirect(reverse('tasks:detail', args=(task.id,)))

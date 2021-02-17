@@ -48,10 +48,14 @@
                         {% endif %}
                     </td>
                     <td>
-                        {#                        <form method="post">#}
-                        {#                            {% csrf_token %}#}
-                        {#                            <a href="{% url 'tasks:task_status' pk=subtask.id %}" class="btn btn-success">完了</a>#}
-                        {#                        </form>#}
+                        <form action="{% url 'tasks:subcomplete' task_id=task.id subtask_id=subtask.id %}" method="post">
+                            {% csrf_token %}
+                            {% if subtask.status %}
+                                <input type="submit" name="working" class="btn btn-primary" value="作業中に戻す">
+                            {% else %}
+                                <input type="submit" name="complete" class="btn btn-success" value="完了">
+                            {% endif %}
+                        </form>
                     </td>
                 </tr>
                 </tbody>

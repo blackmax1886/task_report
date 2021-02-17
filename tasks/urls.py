@@ -13,5 +13,7 @@ urlpatterns = [
     # ex: /tasks/4/subtask/new
     path('<int:pk>/subtask/new', views.SubtaskCreateView.as_view(template_name='tasks/create.html'), name='create_sub'),
     # ex: /tasks/4/status/update
-    path('<int:pk>/status/update', views.complete, name='complete')
+    path('<int:pk>/status/update', views.complete, name='complete'),
+    # ex: /tasks/4/subtask/2/update
+    path('<int:task_id>/subtask/<int:subtask_id>/update', views.subcomplete, name='subcomplete')
 ]
