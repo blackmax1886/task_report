@@ -1,6 +1,7 @@
 from django.views import generic
-from django.urls import reverse_lazy
-from django.contrib import messages
+from django.urls import reverse_lazy, reverse
+from django.shortcuts import get_object_or_404, render
+from django.http import HttpResponseRedirect
 
 from .models import Task, Subtask
 from .forms import TaskForm, SubtaskForm
@@ -36,3 +37,11 @@ class SubtaskCreateView(generic.CreateView):
 
     def get_success_url(self):  # 詳細画面にリダイレクトする。
         return reverse_lazy('tasks:detail', kwargs={'pk': self.kwargs['pk']})
+
+
+def complete(request, pk):
+    task = get_object_or_404(Task, pk=pk)
+    if request.method == 'POST':
+        task.status = True
+        task.save()
+    return HttpResponseRedirect(reverse('tasks:index'))

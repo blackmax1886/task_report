@@ -7,7 +7,6 @@
 
 {% block header %}
     <h1>{{ task.task_name }} : {% if task.subtask_set.all %} {{ task.progress_rate }} % {% endif %}</h1>
-
 {% endblock %}
 
 {% block content %}
@@ -15,6 +14,15 @@
     {% endif %}
 
     <div>
+        {% if not task.status %}
+            <form action="{% url 'tasks:complete' pk=task.id %}" method="post">
+                {% csrf_token %}
+                <input type="submit" class="btn btn-success" value="完了">
+            </form>
+        {% endif %}
+    </div>
+    <div>
+
         <a class="btn btn-primary" href="{% url 'tasks:create_sub' task.pk %}">Add Subtask</a>
     </div>
     {% if task.subtask_set.all %}
@@ -24,6 +32,7 @@
                 <th>サブタスク名</th>
                 <th>期限</th>
                 <th>ステータス</th>
+                <th>操作</th>
             </tr>
             </thead>
             <tbody>
@@ -37,6 +46,12 @@
                         {% else %}
                             Working
                         {% endif %}
+                    </td>
+                    <td>
+                        {#                        <form method="post">#}
+                        {#                            {% csrf_token %}#}
+                        {#                            <a href="{% url 'tasks:task_status' pk=subtask.id %}" class="btn btn-success">完了</a>#}
+                        {#                        </form>#}
                     </td>
                 </tr>
                 </tbody>
