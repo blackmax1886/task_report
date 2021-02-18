@@ -7,13 +7,13 @@ from .forms import LoginForm
 
 
 class Top(generic.TemplateView):
-    template_name = 'accounts/top.html'
+    template_name = 'users/top.html'
 
 
 class Login(LoginView):
     form_class = LoginForm
-    template_name = 'accounts/login.html'
+    template_name = 'users/login.html'
 
 
 class Logout(LoginRequiredMixin, LogoutView):
-    template_name = 'accounts/login.html'
+    template_name = 'users/login.html'

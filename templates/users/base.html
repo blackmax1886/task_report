@@ -13,7 +13,7 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="{% url 'accounts:top' %}">ホームページ名</a>
+      <a class="navbar-brand" href="{% url 'users:top' %}">ホームページ名</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -22,11 +22,11 @@
         <ul class="navbar-nav mr-auto">
           {% if user.is_authenticated %}
           <li>
-            <a class="nav-item nav-link" href="{% url 'accounts:logout' %}">ログアウト</a>
+            <a class="nav-item nav-link" href="{% url 'users:logout' %}">ログアウト</a>
           </li>
           {% else %}
           <li class="nav-item">
-            <a class="nav-item nav-link" href="{% url 'accounts:login' %}">
+            <a class="nav-item nav-link" href="{% url 'users:login' %}">
             ようこそ、ゲスト！ログインはこちら
           </a>
           </li>
