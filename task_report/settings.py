@@ -30,6 +30,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'tasks.apps.TasksConfig',
+    'users',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -119,3 +120,5 @@ STATIC_URL = '/static/'
 LOGIN_URL = 'users:login'
 LOGIN_REDIRECT_URL = 'users:top'
 LOGOUT_REDIRECT_URL = 'users:login'
+
+AUTH_USER_MODEL = 'users.User'
