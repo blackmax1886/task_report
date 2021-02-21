@@ -1,10 +1,13 @@
+from django.contrib.auth import get_user_model
 from django.db import models
+from django.db.models import ForeignKey, CASCADE
 
 
 class Task(models.Model):
     task_name = models.CharField("タスク名", max_length=50)
     deadline = models.DateTimeField("期限")
     status = models.BooleanField(default=False)
+    create_user = ForeignKey(get_user_model(), on_delete=CASCADE)
 
     def __str__(self):
         return self.task_name
