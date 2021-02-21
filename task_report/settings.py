@@ -118,7 +118,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 LOGIN_URL = 'users:login'
-LOGIN_REDIRECT_URL = 'users:top'
+LOGIN_REDIRECT_URL = 'tasks:index'
 LOGOUT_REDIRECT_URL = 'users:login'
 
 AUTH_USER_MODEL = 'users.User'
