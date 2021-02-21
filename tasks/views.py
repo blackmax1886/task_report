@@ -2,12 +2,13 @@ from django.views import generic
 from django.urls import reverse_lazy, reverse
 from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponseRedirect
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from .models import Task, Subtask
 from .forms import TaskForm, SubtaskForm
 
 
-class IndexView(generic.ListView):
+class IndexView(LoginRequiredMixin, generic.ListView):
     model = Task
     template_name = 'tasks/index.html'
     context_object_name = 'closest_task_list'
