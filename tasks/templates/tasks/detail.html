@@ -5,11 +5,13 @@
     {{ task.task_name }}
 {% endblock %}
 
-{% block header %}
-    <h1>{{ task.task_name }} : {% if task.subtask_set.all %} {{ task.progress_rate }} % {% endif %}</h1>
-{% endblock %}
+{#{% block header %}#}
+{#    <h1>{{ task.task_name }} : {% if task.subtask_set.all %} {{ task.progress_rate }} % {% endif %}</h1>#}
+{#{% endblock %}#}
 
 {% block content %}
+    <h1>{{ task.task_name }} : {% if task.subtask_set.all %} {{ task.progress_rate }} % {% endif %}</h1>
+
     {% if error_message %}<p><strong>{{ error_message }}</strong></p>
     {% endif %}
 
