@@ -15,7 +15,7 @@ class IndexView(generic.ListView):
 
     def get_queryset(self):
         """Return the uncompleted tasks ordered by deadline."""
-        return Task.objects.filter(status=False).order_by('-deadline')[::-1]
+        return Task.objects.filter(create_user=self.request.user, status=False).order_by('-deadline')[::-1]
 
 
 class DetailView(generic.DetailView):
