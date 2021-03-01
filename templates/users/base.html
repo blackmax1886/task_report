@@ -34,7 +34,12 @@
             {% else %}
                 <li class="nav-item">
                     <a class="nav-item nav-link" href="{% url 'users:login' %}">
-                        ようこそ、ゲスト！ログインはこちら
+                        ログイン
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-item nav-link" href="{% url 'users:signup' %}">
+                        サインイン
                     </a>
                 </li>
             {% endif %}
