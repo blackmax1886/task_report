@@ -9,11 +9,16 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
           integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 
-    <title>会員登録サンプル</title>
+    <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="{% url 'users:top' %}">task report</a>
+    <div class="navbar justify-content-center">
+        {% if user.is_authenticated %}
+            アカウント : {{ user.username }}
+        {% endif %}
+    </div>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -22,9 +27,6 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             {% if user.is_authenticated %}
-                <li class="nav-item">
-                    アカウント : {{ user.username }}
-                </li>
                 <li class="nav-item">
                     <a class="nav-item nav-link" href="{% url 'tasks:index' %}">タスク一覧</a>
                 </li>

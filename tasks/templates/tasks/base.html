@@ -18,6 +18,11 @@
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="{% url 'users:top' %}">task report</a>
+    <div class="navbar justify-content-center">
+        {% if user.is_authenticated %}
+            アカウント : {{ user.username }}
+        {% endif %}
+    </div>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -27,9 +32,6 @@
         <ul class="navbar-nav mr-auto">
             {% if user.is_authenticated %}
                 <li class="nav-item">
-                    アカウント : {{ user.username }}
-                </li>
-                <li class="nav-item">
                     <a class="nav-item nav-link" href="{% url 'tasks:index' %}">タスク一覧</a>
                 </li>
                 <li class="nav-item">
@@ -38,7 +40,12 @@
             {% else %}
                 <li class="nav-item">
                     <a class="nav-item nav-link" href="{% url 'users:login' %}">
-                        ようこそ、ゲスト！ログインはこちら
+                        ログイン
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-item nav-link" href="{% url 'users:signup' %}">
+                        サインイン
                     </a>
                 </li>
             {% endif %}
