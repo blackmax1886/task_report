@@ -11,7 +11,8 @@ Login followed account:
 * username : sample
 * password : testuser
 
-signup page is now developing !
+This test account shows you basic experience of task report.
+If you like, sign up with your username and password, then manage your tasks!!
 
 
 ## Develop Environment
